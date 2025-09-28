@@ -4,6 +4,7 @@ import MapView, { Marker, Circle } from "react-native-maps";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Constants from 'expo-constants';
 
 export default function MainScreen({ onOpenBadges, onOpenProfile, onOpenSettings, onLogout }) {
   const [location, setLocation] = useState(null);
@@ -12,8 +13,8 @@ export default function MainScreen({ onOpenBadges, onOpenProfile, onOpenSettings
   const [selectedSpot, setSelectedSpot] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const GOOGLE_PLACES_API_KEY = "AIzaSyB1LhuBEFuKPmav_jIM5glW7dfB0tGiumE";
-  const GOOGLE_VISION_API_KEY = "AIzaSyB1LhuBEFuKPmav_jIM5glW7dfB0tGiumE";
+  const GOOGLE_PLACES_API_KEY = Constants.expoConfig.extra.GOOGLE_PLACES_API_KEY;
+  const GOOGLE_VISION_API_KEY = Constants.expoConfig.extra.GOOGLE_VISION_API_KEY;
   const testingMode = true;
 
   useEffect(() => {
@@ -113,13 +114,13 @@ const verifySelfie = async (uri) => {
     if (facesDetected === 0) return Alert.alert("No face detected! Photo rejected.");
 
     // Update spot count
-    setSpots(prev => prev.map(s => {
-      if (s.id === selectedSpot.id) {
-        const updatedCount = (s.currentCount || 0) + facesDetected;
-        return { ...s, currentCount: updatedCount };
-      }
-      return s;
-    }));
+    // setSpots(prev => prev.map(s => {
+    //   if (s.id === selectedSpot.id) {
+    //     const updatedCount = (s.currentCount || 0) + facesDetected;
+    //     return { ...s, currentCount: updatedCount };
+    //   }
+    //   return s;
+    // }));
 
     // Load badges
     const badgesRaw = await AsyncStorage.getItem("WF_BADGES");

@@ -114,14 +114,7 @@ const verifySelfie = async (uri) => {
 
     if (facesDetected === 0) return Alert.alert("No face detected! Photo rejected.");
 
-    // Update spot count
-    // setSpots(prev => prev.map(s => {
-    //   if (s.id === selectedSpot.id) {
-    //     const updatedCount = (s.currentCount || 0) + facesDetected;
-    //     return { ...s, currentCount: updatedCount };
-    //   }
-    //   return s;
-    // }));
+  
 
     // Load badges
     const badgesRaw = await AsyncStorage.getItem("WF_BADGES");

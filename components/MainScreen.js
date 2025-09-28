@@ -42,7 +42,7 @@ export default function MainScreen({ onOpenBadges, onOpenProfile, onOpenSettings
       const json = await res.json();
       if (json.results && json.results.length > 0) {
         setSpots(
-          json.results.slice(0, 8).map(p => ({
+          json.results.slice(0, 10).map(p => ({
             id: p.place_id,
             name: p.name,
             latlng: { latitude: p.geometry.location.lat, longitude: p.geometry.location.lng },

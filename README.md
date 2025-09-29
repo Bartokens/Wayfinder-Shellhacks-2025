@@ -1,4 +1,4 @@
-# Wayfinder
+# Welcome to Wayfinder!
 ### Where Curiosity Meets Community
 
 Wayfinder is a location-based social discovery app that gamifies real-world exploration and authentic human connection. Built to reimagine social media and create positive community impact through technology.
